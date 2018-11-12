@@ -3,21 +3,14 @@ import BoardCard from './BoardCard'
 
 class BoardsContainer extends Component{
 
-  state={
-    selectedBoard: 1
-  }
 
-
-  handleClick=(obj)=>{
-    console.log(obj)
-  }
 
   generateBoardCards(){
     return this.props.boardData.map((boardObj)=>{
       return <BoardCard
       key={boardObj.id}
       boardObj={boardObj}
-      handleClick={this.handleClick}
+      handleClick={this.props.handleClick}
       />
     })
   }

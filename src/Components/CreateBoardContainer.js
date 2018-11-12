@@ -4,6 +4,7 @@ import ImageOptions from './ImageOptions'
 import SearchForm from './SearchForm'
 
 class CreateBoardContainer extends Component{
+
   state={
     images:[],
     boardImages:[]
@@ -46,10 +47,15 @@ class CreateBoardContainer extends Component{
          return null
       }else{
          const newBoardImages=[...this.state.boardImages, obj]
+         this.postImages()
          this.setState({
            boardImages: newBoardImages
          }, ()=>console.log(this.state.boardImages))
       }
+    }
+
+    postImages() {
+      // fetch(``)
     }
 
     handleRemove=(obj)=>{
@@ -64,6 +70,7 @@ class CreateBoardContainer extends Component{
 
 
   render(){
+    console.log("CreateBoardContainer:",this.props.selectedBoard)
     return(
       <div>
       <div>this is CreateBoardContainer (in WindowContainer)</div>

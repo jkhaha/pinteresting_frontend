@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginForm from './LoginForm'
 import BoardsContainer from './BoardsContainer'
 import CreateBoardContainer from './CreateBoardContainer'
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 // import Unsplash from 'unsplash-js/native';
 
 
@@ -10,8 +10,20 @@ class WindowContainer extends Component{
 
   state={
     boardData:[],
+    selectedBoard: 1
+
 //     userData: [],
 //     currentUser: 1
+  }
+
+
+
+  handleClick=(id)=>{
+    console.log(id)
+    this.setState({
+      selectedBoard: id
+    })
+
   }
 //
 // //finds boards associated with a preexisting user
@@ -66,11 +78,15 @@ class WindowContainer extends Component{
 
   render(){
     // let userBoardsToRender = this.state.boardData === [] ? console.log("empty boards") : this.state.boardData
+
+
     return(
       <div>
       <div>In WindowContainer (in app)</div>
-        <Route path="/boards" render={(props)=><BoardsContainer boardData={this.state.boardData}/>} />
-        <Route path="/createboard" component={CreateBoardContainer} />
+      <Switch>
+      <Route path= "/boards/:id" render={(props)=><CreateBoardContainer selectedBoard={this.state.selectedBoard}/>} />
+        <Route path="/boards" render={(props)=><BoardsContainer boardData={this.state.boardData} handleClick={this.handleClick}/>} />
+        </Switch>
 
       </div>
     )
