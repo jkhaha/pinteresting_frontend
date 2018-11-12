@@ -10,32 +10,48 @@ class WindowContainer extends Component{
 
   state={
     boardData:[],
-    user: 1
+    userData: []
   }
 
-  componentDidMount(){
-    this.fetchBoardData()
-  }
 
-  fetchBoardData(){
-    fetch('http://localhost:3001/boards')
-    .then(res=>res.json())
-    .then(data=>this.setState({boardData:data}))
-  }
+  // fetchBoardData(userObj){
+  //   fetch(`http://localhost:3001/users/${userObj.id}/boards`)
+  //   .then(res=>res.json())
+  //   .then(data=>this.setState({boardData:data}))
+  // }
 
   fetchUserData(){
-    fetch('http://localhost:3001/users')
+    fetch(`http://localhost:3001/users`)
     .then(res=>res.json())
-    .then(data=>console.log(data))
+    .then(data=>this.setState({userData:data}, ()=>console.log(this.state.userData)))
   }
 
-  findOrCreateUser=(e, username)=>{
+  findOrCreateUser=(e, userObj)=>{
     e.preventDefault()
-    console.log(e)
-    console.log(username)
+
+    //fetch to users and check if hash includes username
+    //if yes, fetch board data
+    //if no, create new board
+
     this.fetchUserData()
-    //if user exists, fetch their boardData
-    //if user is new, boardData = just create new board
+
+
+  }
+
+  postUser(userObj){
+    console.log(userObj)
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        "name": userObj.name
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    return fetch('http://localhost:3001/users', options)
+    .then(res => res.json())
+    .then(console.log)
   }
 
 

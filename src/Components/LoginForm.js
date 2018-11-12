@@ -14,7 +14,7 @@ class LoginForm extends Component{
 
   render(){
     return(
-      <form onSubmit={(e) => this.props.findOrCreateUser(e, this.state.name)}>
+      <form onSubmit={(e) => this.props.findOrCreateUser(e, this.state)}>
       <input name="name" placeholder="name here" onChange={(e) => this.changeHandler(e)} value={this.state.name}/>
       <button>Log in</button>
       </form>
