@@ -9,7 +9,8 @@ import { Route } from 'react-router-dom';
 class WindowContainer extends Component{
 
   state={
-    boardData:[]
+    boardData:[],
+    user: 1
   }
 
   componentDidMount(){
@@ -22,10 +23,19 @@ class WindowContainer extends Component{
     .then(data=>this.setState({boardData:data}))
   }
 
+  fetchUserData(){
+    fetch('http://localhost:3001/users')
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+  }
+
   findOrCreateUser=(e, username)=>{
     e.preventDefault()
     console.log(e)
     console.log(username)
+    this.fetchUserData()
+    //if user exists, fetch their boardData
+    //if user is new, boardData = just create new board
   }
 
 
