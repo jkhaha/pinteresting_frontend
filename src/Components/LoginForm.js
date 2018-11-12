@@ -5,7 +5,7 @@ class LoginForm extends Component{
   render(){
     return(
       <form>
-      <h1>This will be LoginForm (in WindowContainer)</h1>
+      <div>This will be LoginForm (in WindowContainer)</div>
       </form>
     )
   }

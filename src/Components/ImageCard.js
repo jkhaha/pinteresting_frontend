@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 class ImageCard extends Component{
   render(){
-    console.log(this.props.imageObj)
+    
     // tried to do this.props.imageObj.description but returns as undefined?
     return(
       <div className='ui column'>
         <div className='ui card'>
           <div className="image">
-            <img src={this.props.thumbnail_url} alt=''/>
+            <img src={this.props.thumbnail_url} alt='' onClick={()=>this.props.handleClick(this.props.imageObj)}/>
           </div>
           <div className="content">
             <p className="header">{this.props.description}</p>

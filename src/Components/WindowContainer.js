@@ -10,7 +10,7 @@ class WindowContainer extends Component{
   render(){
     return(
       <div>
-      <h1>In WindowContainer (in app)</h1>
+      <div>In WindowContainer (in app)</div>
       <LoginForm/>
       <BoardsContainer/>
       <CreateBoardContainer/>

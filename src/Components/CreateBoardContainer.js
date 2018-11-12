@@ -5,7 +5,8 @@ import SearchForm from './SearchForm'
 
 class CreateBoardContainer extends Component{
   state={
-    images:[]
+    images:[],
+    boardImages:[]
   }
 
   // componentDidMount(){
@@ -36,16 +37,40 @@ class CreateBoardContainer extends Component{
     .then(data=> this.setState({
       images: data
     }))
-
   }
+
+
+  handleAdd=(obj)=>{
+
+      if (this.state.boardImages.includes(obj)){
+
+         return null
+      }else{
+         const newBoardImages=[...this.state.boardImages, obj]
+         this.setState({
+           boardImages: newBoardImages
+         }, ()=>console.log(this.state.boardImages))
+      }
+    }
+
+    handleRemove=(obj)=>{
+    //
+      const newBoardImages = [...this.state.boardImages]
+      const objIndex = newBoardImages.indexOf(obj)
+
+      newBoardImages.splice(objIndex, 1)
+      this.setState({boardImages: newBoardImages})
+    }
+
+
 
   render(){
     return(
       <div>
-      <h1>this is CreateBoardContainer (in WindowContainer)</h1>
+      <div>this is CreateBoardContainer (in WindowContainer)</div>
       <SearchForm performSearch={this.performSearch}/>
-      <CurrentBoard/>
-      <ImageOptions imageData={this.state.images}/>
+      <CurrentBoard boardImages={this.state.boardImages} handleRemove={this.handleRemove}/>
+      <ImageOptions imageData={this.state.images} handleAdd = {this.handleAdd}/>
       </div>
     )
   }

@@ -11,6 +11,7 @@ class ImageOptions extends Component{
       thumbnail_url={imageObj.urls.thumb}
       description={imageObj.description}
       imageObj={imageObj}
+      handleClick={this.props.handleAdd}
       />)}
     )
   }
@@ -20,11 +21,13 @@ class ImageOptions extends Component{
   render(){
     let imagesToRender= this.props.imageData.length === 0 ? null : this.generateImageCards()
     return(
+
       <div className="ui five column grid">
+
         <div className="row">
           {imagesToRender}
         </div>
-      <h1>In ImageOptions (in CreateBoardContainer)</h1>
+          <div>In ImageOptions (in CreateBoardContainer)</div>
       </div>
     )
   }

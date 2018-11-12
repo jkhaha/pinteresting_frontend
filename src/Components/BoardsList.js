@@ -5,7 +5,7 @@ class BoardsList extends Component{
   render(){
     return(
       <div>
-      <h1>this is BoardsList (in BoardsContainer)</h1>
+      <div>this is BoardsList (in BoardsContainer)</div>
       <BoardCard/>
       </div>
     )

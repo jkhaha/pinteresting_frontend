@@ -7,7 +7,7 @@ class BoardsContainer extends Component{
   render(){
     return(
       <div>
-      <h1>In BoardsContainer (inside WindowContainer)</h1>
+      <div>In BoardsContainer (inside WindowContainer)</div>
       <UserHeader/>
       <BoardsList/>
       </div>

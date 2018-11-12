@@ -4,7 +4,7 @@ class UserHeader extends Component{
 
   render(){
     return(
-      <h1>this is UserHeader (in BoardsContainer)</h1>
+      <div>this is UserHeader (in BoardsContainer)</div>
     )
   }
 }
