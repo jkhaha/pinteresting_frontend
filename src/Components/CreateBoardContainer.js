@@ -43,7 +43,6 @@ class CreateBoardContainer extends Component{
   handleAdd=(obj)=>{
 
       if (this.state.boardImages.includes(obj)){
-
          return null
       }else{
          const newBoardImages=[...this.state.boardImages, obj]
