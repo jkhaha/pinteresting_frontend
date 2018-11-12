@@ -10,58 +10,66 @@ class WindowContainer extends Component{
 
   state={
     boardData:[],
-    userData: []
+//     userData: [],
+//     currentUser: 1
   }
-
-
-  // fetchBoardData(userObj){
-  //   fetch(`http://localhost:3001/users/${userObj.id}/boards`)
-  //   .then(res=>res.json())
-  //   .then(data=>this.setState({boardData:data}))
-  // }
-
-  fetchUserData(){
-    fetch(`http://localhost:3001/users`)
+//
+// //finds boards associated with a preexisting user
+  fetchBoardData(){
+    fetch(`http://localhost:3001/boards`)
     .then(res=>res.json())
-    .then(data=>this.setState({userData:data}, ()=>console.log(this.state.userData)))
+    .then(data=>this.setState({
+      boardData:data,
+      // currentUser: userObj.id
+    }, ()=> console.log(this.state.boardData)))
   }
-
-  findOrCreateUser=(e, userObj)=>{
-    e.preventDefault()
-
-    //fetch to users and check if hash includes username
-    //if yes, fetch board data
-    //if no, create new board
-
-    this.fetchUserData()
-
-
+//
+//   fetchUserData(){
+//     return fetch(`http://localhost:3001/users`)
+//   }
+//
+// // determines whether user is new and needs to be created OR already exists
+//   findOrCreateUser=(e, userObj)=>{
+//     e.preventDefault()
+//     let findUser = this.state.userData.find((userInBackend)=>{
+//       return userInBackend.name === userObj.name
+//     })
+//     this.setState({
+//       currentUser: findUser.id
+//     }, ()=>console.log(this.state.currentUser))
+//     findUser === undefined ? this.postUser(userObj) : this.fetchBoardData(userObj)
+//   }
+//
+// //fetches all user data and stores in state
+  componentDidMount() {
+    this.fetchBoardData()
   }
-
-  postUser(userObj){
-    console.log(userObj)
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({
-        "name": userObj.name
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    return fetch('http://localhost:3001/users', options)
-    .then(res => res.json())
-    .then(console.log)
-  }
-
+//
+// // posts a new user and sets state to new user id
+//   postUser(userObj){
+//     console.log(userObj)
+//     const options = {
+//       method: 'POST',
+//       body: JSON.stringify({
+//         "name": userObj.name
+//       }),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     }
+//     return fetch('http://localhost:3001/users', options)
+//     .then(res => res.json())
+//     .then(newUser => this.setState({
+//       currentUser: newUser.id
+//     }))
+//   }
 
   render(){
+    // let userBoardsToRender = this.state.boardData === [] ? console.log("empty boards") : this.state.boardData
     return(
       <div>
       <div>In WindowContainer (in app)</div>
-
-        <Route path="/login" render={(props)=><LoginForm findOrCreateUser={this.findOrCreateUser}/>} />
-        <Route path="/boardscontainer" render={(props)=><BoardsContainer boardData={this.state.boardData}/>} />
+        <Route path="/boards" render={(props)=><BoardsContainer boardData={this.state.boardData}/>} />
         <Route path="/createboard" component={CreateBoardContainer} />
 
       </div>

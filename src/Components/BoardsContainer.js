@@ -24,7 +24,6 @@ class BoardsContainer extends Component{
 
   render(){
     let boardsToRender= this.props.boardData.length === 0 ? null : this.generateBoardCards()
-
     return(
       <div>
       <div>this is BoardsContainer (in WindowContainer)</div>
