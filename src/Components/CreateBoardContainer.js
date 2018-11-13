@@ -7,28 +7,10 @@ class CreateBoardContainer extends Component{
 
   state={
     images:[],
-    boardImages:[]
+    boardImages:[],
+    // boardId: this.props.selectedBoard
   }
 
-  // componentDidMount(){
-  //   fetch(`https://api.unsplash.com/search/photos?page=1&query=dogs&client_id=e67b6fb9adfed59b64dbe373ea44ecd2f315200fd108f1268a5b6fa0d66ad0f7`)
-  //   .then(res=>res.json())
-  //   .then(data=> this.setState({
-  //     images: data
-  //   }))
-  // }
-
-  // componentDidMount(){
-  //   this.fetchRandom()
-  // }
-  //
-  // fetchRandom(){
-  //   fetch(`https://api.unsplash.com/photos/random/?client_id=e67b6fb9adfed59b64dbe373ea44ecd2f315200fd108f1268a5b6fa0d66ad0f7`)
-  //   .then(res=>res.json())
-  //   .then(random_image_obj=>this.setState({
-  //     images: [random_image_obj]
-  //   }, ()=>console.log(this.state.images)))
-  // }
 
   performSearch=(e, query) =>{
     e.preventDefault();
@@ -46,16 +28,33 @@ class CreateBoardContainer extends Component{
       if (this.state.boardImages.includes(obj)){
          return null
       }else{
-         const newBoardImages=[...this.state.boardImages, obj]
-         this.postImages()
-         this.setState({
-           boardImages: newBoardImages
-         }, ()=>console.log(this.state.boardImages))
+
+         return this.postImage(obj)
+
+
       }
     }
 
-    postImages() {
-      // fetch(``)
+    postImage(image) {
+      console.log("image id is", image.id)
+      // why isn't it posting image id?? it just shows up as null :(
+
+      const options = {
+        method: 'POST',
+        body: JSON.stringify({
+          board_id:this.props.selectedBoard,
+          image_id:image.id
+        }),
+        headers:{
+          "Content-Type":"application/json"
+        }
+      }
+      return fetch(`http://localhost:3001/images`, options)
+      .then(res=>res.json())
+      .then(data=>
+        this.setState({
+          boardImages: data
+        }, ()=>console.log(this.state.boardImages)))
     }
 
     handleRemove=(obj)=>{
@@ -70,7 +69,7 @@ class CreateBoardContainer extends Component{
 
 
   render(){
-    console.log("CreateBoardContainer:",this.props.selectedBoard)
+
     return(
       <div>
       <div>this is CreateBoardContainer (in WindowContainer)</div>
