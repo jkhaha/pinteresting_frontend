@@ -3,8 +3,6 @@ import BoardCard from './BoardCard'
 
 class BoardsContainer extends Component{
 
-
-
   generateBoardCards(){
     return this.props.boardData.map((boardObj)=>{
       return <BoardCard
@@ -18,9 +16,10 @@ class BoardsContainer extends Component{
   render(){
     let boardsToRender= this.props.boardData.length === 0 ? null : this.generateBoardCards()
     return(
-      <div>
-      <div>this is BoardsContainer (in WindowContainer)</div>
-      {boardsToRender}
+      <div className="ui two column grid">
+        <div className="row">
+          {boardsToRender}
+        </div>
       </div>
     )
   }

@@ -33,7 +33,7 @@ class CreateBoardContainer extends Component{
   performSearch=(e, query) =>{
     e.preventDefault();
 
-    return fetch(`https://api.unsplash.com/search/photos?page=1&query=${query}&client_id=e67b6fb9adfed59b64dbe373ea44ecd2f315200fd108f1268a5b6fa0d66ad0f7`)
+    return fetch(`https://api.unsplash.com/search/photos?per_page=30&page=1&query=${query}&client_id=e67b6fb9adfed59b64dbe373ea44ecd2f315200fd108f1268a5b6fa0d66ad0f7`)
     .then(res=>res.json())
     .then(data=> this.setState({
       images: data

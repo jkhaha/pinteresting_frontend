@@ -18,7 +18,7 @@ class CurrentBoard extends Component{
   render(){
     let imagesToRender= this.props.boardImages.length === 0 ? null : this.generateImageCards()
     return(
-      <div className="current-board">
+      <div className="ui segment inverted pink">
       <div className="ui five column grid">
 
         <div className="row">
