@@ -23,11 +23,9 @@ class ImageOptions extends Component{
     return(
 
       <div className="ui five column grid">
-
         <div className="row">
           {imagesToRender}
         </div>
-          <div>In ImageOptions (in CreateBoardContainer)</div>
       </div>
     )
   }

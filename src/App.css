@@ -5,5 +5,17 @@
 
 #placeholder_segment {
   padding: 20px;
-  padding-bottom: 20px;
+}
+
+#individual_board_header {
+  margin-top: 30px;
+  text-align:center;
+}
+
+#image_cards {
+  padding: 10px;
+}
+
+#segment_background {
+  background-color: #faebd7;
 }

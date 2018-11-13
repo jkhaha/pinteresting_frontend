@@ -19,9 +19,8 @@ class CurrentBoard extends Component{
   render(){
     let imagesToRender= this.props.imagesForSelectedBoard.length === 0 ? null : this.generateImageCards()
     return(
-      <div className="ui segment inverted pink">
+      <div className="ui segment" id="segment_background">
       <div className="ui five column grid">
-
         <div className="row">
         {imagesToRender}
         </div>

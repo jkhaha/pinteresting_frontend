@@ -9,30 +9,10 @@ class CreateBoardContainer extends Component{
     images:[],
     boardImages:[],
     imagesForSelectedBoard: []
-
-    // newBoardImage:{}
-    // boardId: this.props.selectedBoard
   }
 
   componentDidMount(){
     this.fetchImagesFromJSON()
-    // let imagesToFilter = [...this.state.boardImages]
-    // imagesToFilter.filter(image=> {
-    //   return image.board_id === this.props.selectedBoard
-    // })
-    // console.log(imagesToFilter)
-
-    // let fetchedImages = this.fetchImagesFromJSON()
-    // .then(res=>res.json())
-    // .then(data=>this.setState({
-    //
-    // }))
-
-    // let filteredImages = images.filter(image=>{
-    //    return image.board_id===this.props.selectedBoard})
-    // this.setState({
-    //   boardImages: filteredImages
-    // }, ()=>console.log(this.state.boardImages))
   }
 
   fetchImagesFromJSON(){
@@ -114,9 +94,10 @@ class CreateBoardContainer extends Component{
 
 
   render(){
+    const titleHeader = `${this.props.boardTitle} BoredBoard`
     return(
       <div>
-      <div>this is CreateBoardContainer (in WindowContainer)</div>
+      <h2 id='individual_board_header'  className='ui block header' style={{width: '150vh'}}>{titleHeader}</h2>
       <SearchForm performSearch={this.performSearch}/>
       <CurrentBoard imagesForSelectedBoard={this.state.imagesForSelectedBoard} handleRemove={this.handleRemove}/>
       <ImageOptions imageData={this.state.images} handleAdd = {this.handleAdd}/>

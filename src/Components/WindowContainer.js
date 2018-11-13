@@ -7,21 +7,20 @@ import { Route, Switch } from 'react-router-dom';
 
 
 class WindowContainer extends Component{
-
+//change default board
   state={
     boardData:[],
-    selectedBoard: 1
-
-//     userData: [],
-//     currentUser: 1
+    selectedBoard: 1,
+    boardTitle: ''
   }
 
 
 
-  handleClick=(id)=>{
-    console.log(id)
+  handleClick=(boardObj)=>{
+    console.log(boardObj.title)
     this.setState({
-      selectedBoard: id
+      selectedBoard: boardObj.id,
+      boardTitle: boardObj.title
     })
 
   }
@@ -32,7 +31,7 @@ class WindowContainer extends Component{
     .then(res=>res.json())
     .then(data=>this.setState({
       boardData:data,
-      // currentUser: userObj.id
+      // currentUser: userObj.boardObj.id
     }))
   }
 //
@@ -83,7 +82,7 @@ class WindowContainer extends Component{
     return(
       <div>
       <Switch>
-      <Route path= "/boards/:id" render={(props)=><CreateBoardContainer selectedBoard={this.state.selectedBoard}/>} />
+      <Route path= "/boards/:id" render={(props)=><CreateBoardContainer boardTitle={this.state.boardTitle} selectedBoard={this.state.selectedBoard}/>} />
         <Route path="/boards" render={(props)=><BoardsContainer boardData={this.state.boardData} handleClick={this.handleClick}/>} />
         </Switch>
 

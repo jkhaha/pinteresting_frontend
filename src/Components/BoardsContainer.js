@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BoardCard from './BoardCard'
+import CreateNewBoard from './CreateNewBoard'
 
 class BoardsContainer extends Component{
 
@@ -17,8 +18,9 @@ class BoardsContainer extends Component{
     let boardsToRender= this.props.boardData.length === 0 ? null : this.generateBoardCards()
     return(
       <div className="ui two column grid">
-        <h2 id='block_header'  className='ui block header' style={{width: '150vh'}}>Bored Boards</h2>
+        <h2 id='block_header'  className='ui block header' style={{width: '150vh'}}>BoredBoards</h2>
         <div className="row" id="placeholder_segment">
+          <CreateNewBoard/>
           {boardsToRender}
         </div>
       </div>
