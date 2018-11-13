@@ -82,7 +82,6 @@ class WindowContainer extends Component{
 
     return(
       <div>
-      <div>In WindowContainer (in app)</div>
       <Switch>
       <Route path= "/boards/:id" render={(props)=><CreateBoardContainer selectedBoard={this.state.selectedBoard}/>} />
         <Route path="/boards" render={(props)=><BoardsContainer boardData={this.state.boardData} handleClick={this.handleClick}/>} />

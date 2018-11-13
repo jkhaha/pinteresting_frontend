@@ -17,7 +17,8 @@ class BoardsContainer extends Component{
     let boardsToRender= this.props.boardData.length === 0 ? null : this.generateBoardCards()
     return(
       <div className="ui two column grid">
-        <div className="row">
+        <h2 id='block_header'  className='ui block header' style={{width: '150vh'}}>Bored Boards</h2>
+        <div className="row" id="placeholder_segment">
           {boardsToRender}
         </div>
       </div>

@@ -5,7 +5,7 @@ class BoardCard extends Component{
 
   render(){
     return(
-      <div className='ui column'>
+      <div className='ui column' id="placeholder_segment">
 
       <div className="ui  placeholder segment">
         <div className="ui icon header">
