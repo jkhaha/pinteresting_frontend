@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class ImageCard extends Component{
   render(){
-    
+
     // tried to do this.props.imageObj.description but returns as undefined?
     return(
       <div className='ui column'>
@@ -13,7 +13,7 @@ class ImageCard extends Component{
           <div className="content">
             <p className="header">{this.props.description}</p>
             <div className="meta">
-              <span className="date">Maybe put photographer here</span>
+              <span className="date"></span>
             </div>
             <div className="description">
             </div>
