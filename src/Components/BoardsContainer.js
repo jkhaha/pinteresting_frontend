@@ -10,6 +10,7 @@ class BoardsContainer extends Component{
       key={boardObj.id}
       boardObj={boardObj}
       handleClick={this.props.handleClick}
+      handleDeleteBoard={this.props.handleDeleteBoard}
       />
     })
   }
@@ -20,7 +21,7 @@ class BoardsContainer extends Component{
       <div className="ui two column grid">
         <h2 id='block_header'  className='ui block header' style={{width: '150vh'}}>BoredBoards</h2>
         <div className="row" id="placeholder_segment">
-          <CreateNewBoard/>
+          <CreateNewBoard handleNewBoardClick={this.props.handleNewBoardClick}/>
           {boardsToRender}
         </div>
       </div>

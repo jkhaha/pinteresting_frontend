@@ -67,7 +67,9 @@ class CreateBoardContainer extends Component{
       }
       fetch(`http://localhost:3001/images`, options)
       .then(res=>res.json())
-      .then(newImage=>this.setState({imagesForSelectedBoard: [...this.state.imagesForSelectedBoard, newImage]}, ()=> console.log(this.state.imagesForSelectedBoard)))
+      .then(newImage=>this.setState(
+        {imagesForSelectedBoard: [...this.state.imagesForSelectedBoard, newImage]},
+        ()=> console.log(this.state.imagesForSelectedBoard)))
     }
 
     handleRemove=(image)=>{
