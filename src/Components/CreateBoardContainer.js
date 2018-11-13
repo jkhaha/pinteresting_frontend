@@ -8,7 +8,28 @@ class CreateBoardContainer extends Component{
   state={
     images:[],
     boardImages:[],
+
+    // newBoardImage:{}
     // boardId: this.props.selectedBoard
+  }
+
+  componentDidMount(){
+    let fetchedImages = this.fetchImagesFromJSON()
+    .then(res=>res.json())
+    .then(data=>this.setState({
+
+    }))
+
+    // let filteredImages = images.filter(image=>{
+    //    return image.board_id===this.props.selectedBoard})
+    // this.setState({
+    //   boardImages: filteredImages
+    // }, ()=>console.log(this.state.boardImages))
+  }
+
+  fetchImagesFromJSON(){
+    return fetch(`http://localhost:3001/images`)
+
   }
 
 
@@ -23,38 +44,41 @@ class CreateBoardContainer extends Component{
   }
 
 
-  handleAdd=(obj)=>{
-
-      if (this.state.boardImages.includes(obj)){
+  handleAdd=(imageObj)=>{
+      if (this.state.boardImages.includes(imageObj)){
          return null
       }else{
+          const data={
+            "board_id":this.props.selectedBoard,
+            "thumbnail_url":imageObj.urls.thumb
+          }
 
-         return this.postImage(obj)
+
+         let allBoardImages = [...this.state.boardImages, this.state.newBoardImage]
+         this.setState({
+           boardImages:allBoardImages
+         }, ()=>console.log("ALL BOARD IMAGES:",this.state.boardImages))
+         this.postImage(data)
 
 
       }
     }
 
-    postImage(image) {
-      console.log("image id is", image.id)
-      // why isn't it posting image id?? it just shows up as null :(
+    postImage(data) {
 
       const options = {
         method: 'POST',
-        body: JSON.stringify({
-          board_id:this.props.selectedBoard,
-          image_id:image.id
-        }),
+        body: JSON.stringify(data),
         headers:{
           "Content-Type":"application/json"
         }
       }
-      return fetch(`http://localhost:3001/images`, options)
+      fetch(`http://localhost:3001/images`, options)
       .then(res=>res.json())
-      .then(data=>
-        this.setState({
-          boardImages: data
-        }, ()=>console.log(this.state.boardImages)))
+      .then(newImage=>this.setState({boardImages:[newImage]}))
+
+
+
     }
 
     handleRemove=(obj)=>{

@@ -8,8 +8,8 @@ class ImageOptions extends Component{
     return this.props.imageData.results.map((imageObj) =>{
       return (<ImageCard
       key={imageObj.id}
-      thumbnail_url={imageObj.urls.thumb}
-      description={imageObj.description}
+      // thumbnail_url={imageObj.urls.thumb}
+      // description={imageObj.description}
       imageObj={imageObj}
       handleClick={this.props.handleAdd}
       />)}
