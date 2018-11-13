@@ -33,7 +33,7 @@ class WindowContainer extends Component{
     .then(data=>this.setState({
       boardData:data,
       // currentUser: userObj.id
-    }, ()=> console.log(this.state.boardData)))
+    }))
   }
 //
 //   fetchUserData(){

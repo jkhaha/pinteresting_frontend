@@ -8,17 +8,25 @@ class CreateBoardContainer extends Component{
   state={
     images:[],
     boardImages:[],
+    imagesForSelectedBoard: []
 
     // newBoardImage:{}
     // boardId: this.props.selectedBoard
   }
 
   componentDidMount(){
-    let fetchedImages = this.fetchImagesFromJSON()
-    .then(res=>res.json())
-    .then(data=>this.setState({
+    this.fetchImagesFromJSON()
+    // let imagesToFilter = [...this.state.boardImages]
+    // imagesToFilter.filter(image=> {
+    //   return image.board_id === this.props.selectedBoard
+    // })
+    // console.log(imagesToFilter)
 
-    }))
+    // let fetchedImages = this.fetchImagesFromJSON()
+    // .then(res=>res.json())
+    // .then(data=>this.setState({
+    //
+    // }))
 
     // let filteredImages = images.filter(image=>{
     //    return image.board_id===this.props.selectedBoard})
@@ -29,7 +37,20 @@ class CreateBoardContainer extends Component{
 
   fetchImagesFromJSON(){
     return fetch(`http://localhost:3001/images`)
+    .then(res=> res.json())
+    .then(images => {this.setState({
+      boardImages: images
+    }, ()=>this.filterImages())})
+  }
 
+  filterImages() {
+    let imagesToFilter = [...this.state.boardImages]
+    let filteredImages = imagesToFilter.filter(image=> {
+      return image.board_id === this.props.selectedBoard
+    })
+    this.setState({
+      imagesForSelectedBoard: filteredImages
+    })
   }
 
 
@@ -44,61 +65,60 @@ class CreateBoardContainer extends Component{
   }
 
 
-  handleAdd=(imageObj)=>{
-      if (this.state.boardImages.includes(imageObj)){
-         return null
-      }else{
-          const data={
-            "board_id":this.props.selectedBoard,
-            "thumbnail_url":imageObj.urls.thumb
-          }
-
-
-         let allBoardImages = [...this.state.boardImages, this.state.newBoardImage]
-         this.setState({
-           boardImages:allBoardImages
-         }, ()=>console.log("ALL BOARD IMAGES:",this.state.boardImages))
-         this.postImage(data)
-
-
-      }
+  handleAdd=(imageObj)=> {
+    if (this.state.imagesForSelectedBoard.find((image) => image.thumbnail_url === imageObj.urls.thumb)) {
+      return null
+    } else {
+      this.postImage(imageObj)
     }
+  }
 
-    postImage(data) {
-
+    postImage = (imageObj) => {
+      const data= {
+        "board_id":this.props.selectedBoard,
+        "thumbnail_url":imageObj.urls.thumb
+      }
       const options = {
         method: 'POST',
         body: JSON.stringify(data),
-        headers:{
+        headers: {
           "Content-Type":"application/json"
         }
       }
       fetch(`http://localhost:3001/images`, options)
       .then(res=>res.json())
-      .then(newImage=>this.setState({boardImages:[newImage]}))
-
-
-
+      .then(newImage=>this.setState({imagesForSelectedBoard: [...this.state.imagesForSelectedBoard, newImage]}, ()=> console.log(this.state.imagesForSelectedBoard)))
     }
 
-    handleRemove=(obj)=>{
-    //
-      const newBoardImages = [...this.state.boardImages]
-      const objIndex = newBoardImages.indexOf(obj)
-
-      newBoardImages.splice(objIndex, 1)
-      this.setState({boardImages: newBoardImages})
+    handleRemove=(image)=>{
+      let imageId = image.id
+      let imageArray = [...this.state.imagesForSelectedBoard]
+      this.setState({
+        imagesForSelectedBoard: imageArray.filter((arrayImage)=>{
+          return arrayImage.id !== imageId
+        })
+      })
+      this.deleteImage(imageId)
     }
 
+    deleteImage=(imageId)=> {
+
+      const options = {
+        method: 'DELETE',
+        headers: {
+          "Content-Type":"application/json"
+        }
+      }
+      return fetch(`http://localhost:3001/images/${imageId}`, options)
+    }
 
 
   render(){
-
     return(
       <div>
       <div>this is CreateBoardContainer (in WindowContainer)</div>
       <SearchForm performSearch={this.performSearch}/>
-      <CurrentBoard boardImages={this.state.boardImages} handleRemove={this.handleRemove}/>
+      <CurrentBoard imagesForSelectedBoard={this.state.imagesForSelectedBoard} handleRemove={this.handleRemove}/>
       <ImageOptions imageData={this.state.images} handleAdd = {this.handleAdd}/>
       </div>
     )

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CurrentBoardImageCard extends Component{
 
   render(){
-    console.log(this.props)
+    // console.log(this.props)
     // tried to do this.props.imageObj.description but returns as undefined?
     return(
       <div className='ui column'>
@@ -12,7 +12,7 @@ class CurrentBoardImageCard extends Component{
             <img src={this.props.imageObj.thumbnail_url} alt='' onClick={()=>this.props.handleClick(this.props.imageObj)}/>
           </div>
           <div className="content">
-            <p className="header">{this.props.imageObj.board_id}</p>
+            <p className="header">{this.props.imageObj.description}</p>
             <div className="meta">
               <span className="date"></span>
             </div>

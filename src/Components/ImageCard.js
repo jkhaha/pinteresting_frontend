@@ -11,7 +11,7 @@ class ImageCard extends Component{
             <img src={this.props.imageObj.urls.thumb} alt='' onClick={()=>this.props.handleClick(this.props.imageObj)}/>
           </div>
           <div className="content">
-            <p className="header">{this.props.imageObj.description}</p>
+            <p className="header"></p>
             <div className="meta">
               <span className="date"></span>
             </div>

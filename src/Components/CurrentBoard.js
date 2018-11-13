@@ -4,8 +4,8 @@ import CurrentBoardImageCard from './CurrentBoardImageCard'
 class CurrentBoard extends Component{
 
   generateImageCards(){
-    console.log("IN GENERATE CARDS CURRBOARD",this.props)
-    return this.props.boardImages.map((imageObj) =>{
+    // console.log("IN GENERATE CARDS CURRBOARD",this.props)
+    return this.props.imagesForSelectedBoard.map((imageObj) =>{
       return (<CurrentBoardImageCard
       key={imageObj.id}
       // thumbnail_url={imageObj.urls.thumb}
@@ -17,7 +17,7 @@ class CurrentBoard extends Component{
   }
 
   render(){
-    let imagesToRender= this.props.boardImages.length === 0 ? null : this.generateImageCards()
+    let imagesToRender= this.props.imagesForSelectedBoard.length === 0 ? null : this.generateImageCards()
     return(
       <div className="ui segment inverted pink">
       <div className="ui five column grid">
