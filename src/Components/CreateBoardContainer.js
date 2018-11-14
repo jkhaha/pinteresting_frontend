@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CurrentBoard from './CurrentBoard'
 import ImageOptions from './ImageOptions'
 import SearchForm from './SearchForm'
+import {Link} from "react-router-dom"
 
 class CreateBoardContainer extends Component{
 
@@ -96,10 +97,15 @@ class CreateBoardContainer extends Component{
 
 
   render(){
+    console.log(this.props.selectedBoard)
     const titleHeader = `${this.props.boardTitle} BoredBoard`
     return(
       <div>
-      <h2 id='individual_board_header'  className='ui block header' style={{width: '150vh'}}>{titleHeader}</h2>
+
+      <h2 id='individual_board_header'  className='ui block header' style={{width: '100%'}}>
+          <Link to={`/boards`}><i id="arrow_icon" className="arrow left icon"></i>   </Link>{titleHeader}
+        </h2>
+
       <SearchForm performSearch={this.performSearch}/>
       <CurrentBoard imagesForSelectedBoard={this.state.imagesForSelectedBoard} handleRemove={this.handleRemove}/>
       <ImageOptions imageData={this.state.images} handleAdd = {this.handleAdd}/>

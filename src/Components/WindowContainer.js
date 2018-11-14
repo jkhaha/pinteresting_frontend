@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import LoginForm from './LoginForm'
 import BoardsContainer from './BoardsContainer'
 import CreateBoardContainer from './CreateBoardContainer'
 import { Route, Switch } from 'react-router-dom';
@@ -10,13 +9,15 @@ class WindowContainer extends Component{
 //change default board
   state={
     boardData:[],
-    selectedBoard: '',
+    selectedBoard: undefined,
     boardTitle: ''
   }
 
   handleNewBoardClick=(newBoardObj)=>{
     console.log(newBoardObj)
-
+    if (newBoardObj.title === '') {
+      return null
+    } else {
     const data= {
       "title": newBoardObj.title,
       "user_id":2
@@ -33,7 +34,7 @@ class WindowContainer extends Component{
     .then(newBoard=>this.setState(
       {boardData:[...this.state.boardData, newBoard]},
       ()=>console.log(this.state.boardData)))
-
+      }
   }
 
 
@@ -79,7 +80,9 @@ class WindowContainer extends Component{
   }
 
   componentDidMount() {
+
     this.fetchBoardData()
+    
   }
 
 
@@ -88,7 +91,13 @@ class WindowContainer extends Component{
     return(
       <div>
       <Switch>
-      <Route path= "/boards/:id" render={(props)=><CreateBoardContainer boardTitle={this.state.boardTitle} selectedBoard={this.state.selectedBoard}/>} />
+
+      <Route path= "/boards/:id" render={(props)=>
+          <CreateBoardContainer
+          boardTitle={this.state.boardTitle}
+          selectedBoard={this.state.selectedBoard}
+          />} />
+
         <Route path="/" render={(props)=>
           <BoardsContainer boardData={this.state.boardData}
         handleClick={this.handleClick}

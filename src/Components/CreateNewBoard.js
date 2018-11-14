@@ -20,7 +20,7 @@ class CreateNewBoard extends Component {
            <i className="plus icon" onClick={()=>this.props.handleNewBoardClick(this.state)}></i>
            <div className="ui form">
               <div className="field">
-                <input type="text" name='title' placeholder="new board name here..." value={this.state.title} onChange={(e)=>this.handleChange(e)}/>
+                <input type="text" name='title' placeholder="title here then click plus to add" value={this.state.title} onChange={(e)=>this.handleChange(e)}/>
               </div>
             </div>
         </div>

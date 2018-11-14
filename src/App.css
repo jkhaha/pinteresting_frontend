@@ -11,7 +11,7 @@
 #individual_board_header {
   margin-top: 30px;
   width: 100%;
-  text-align:center;
+  text-align: center;
 }
 
 #image_cards {
@@ -20,4 +20,11 @@
 
 #segment_background {
   background-color: #faebd7;
+}
+
+#arrow_icon {
+  margin-top: 42px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
