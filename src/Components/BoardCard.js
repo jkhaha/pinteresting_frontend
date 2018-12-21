@@ -17,7 +17,7 @@ class BoardCard extends Component{
             {this.props.boardObj.title}
           </Link>
         </div>
-          <div><i className='x icon red' onClick={()=>this.props.handleDeleteBoard(this.props.boardObj)}></i></div>
+          <div><i id="x_icon" className='x icon red' onClick={()=>this.props.handleDeleteBoard(this.props.boardObj)}></i></div>
       </div>
 
       </div>
