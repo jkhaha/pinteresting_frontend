@@ -21,7 +21,7 @@ Application backend and instructions for setup: [BoredBoards Backend](https://gi
 
 ## Demo
 
-[Demo Video]()
+[Demo Video](https://www.youtube.com/watch?v=3GcxabXyVKE&feature=youtu.be)
 
 ## Instructions
 
