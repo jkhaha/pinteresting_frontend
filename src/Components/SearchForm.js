@@ -11,12 +11,6 @@ class SearchForm extends Component {
       query: e.target.value
     }, ()=>console.log(this.state.query))
   }
-  //
-  //
-  // <form onSubmit={(e) => this.props.performSearch(e, this.state.query)}>
-  // <input name="query" placeholder="search here..." onChange={(e) => this.changeHandler(e)} value={this.state.query}/>
-  // <button>Search</button>
-  // </form>
 
   render(){
     return(
