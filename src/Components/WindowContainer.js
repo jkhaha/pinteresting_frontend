@@ -14,7 +14,6 @@ class WindowContainer extends Component{
   }
 
   handleNewBoardClick=(newBoardObj)=>{
-    console.log(newBoardObj)
     if (newBoardObj.title === '') {
       return null
     } else {
@@ -82,7 +81,7 @@ class WindowContainer extends Component{
   componentDidMount() {
 
     this.fetchBoardData()
-    
+
   }
 
 
