@@ -79,9 +79,8 @@ class WindowContainer extends Component{
   }
 
   componentDidMount() {
-
+    console.log("in component did mount");
     this.fetchBoardData()
-
   }
 
 
