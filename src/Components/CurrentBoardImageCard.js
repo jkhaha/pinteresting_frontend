@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 class CurrentBoardImageCard extends Component{
 
   render(){
-    // console.log(this.props)
-    // tried to do this.props.imageObj.description but returns as undefined?
+
     return(
       <div className='ui column' id='image_cards'>
         <div className='ui card'>

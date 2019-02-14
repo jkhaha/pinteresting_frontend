@@ -4,7 +4,6 @@ import CurrentBoardImageCard from './CurrentBoardImageCard'
 class CurrentBoard extends Component{
 
   generateImageCards(){
-    // console.log("IN GENERATE CARDS CURRBOARD",this.props)
     return this.props.imagesForSelectedBoard.map((imageObj) =>{
       return (<CurrentBoardImageCard
       key={imageObj.id}
