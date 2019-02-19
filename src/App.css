@@ -2,17 +2,13 @@
   margin-top: 30px;
   width: 100%;
   text-align: center;
+  font-size: 100px;
 }
 
 #placeholder_segment {
   padding: 20px;
 }
 
-#individual_board_header {
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
-}
 
 #image_cards {
   padding: 10px;
@@ -27,4 +23,12 @@
   position: absolute;
   top: 0px;
   left: 0px;
+  display:inline-block;
+}
+
+#individual_board_header {
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
 }
