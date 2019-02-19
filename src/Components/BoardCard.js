@@ -9,7 +9,7 @@ class BoardCard extends Component{
     return(
       <div className='ui column' id="placeholder_segment">
 
-      <div className="ui placeholder segment">
+      <div className="ui placeholder segment" id ="box">
 
         <div className="ui icon header">
           <Link to={`/boards/${this.props.boardObj.id}`}>
