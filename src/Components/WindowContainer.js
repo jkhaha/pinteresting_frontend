@@ -87,7 +87,7 @@ class WindowContainer extends Component{
   render(){
 
     return(
-      <div>
+      <div className = "WindowContainer">
       <Switch>
       <Route path= "/boards/:id" render={(props)=>
           <CreateBoardContainer

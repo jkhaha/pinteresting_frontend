@@ -1,30 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Exo');
+
+.WindowContainer{
+  background-color: #D8E1E9;
+}
+
 #block_header {
   margin-top: 30px;
   width: 100%;
   text-align: center;
+  font-size: 50px;
+  padding-top: 20px;
+  font-family: 'Exo', sans-serif;
+   text-shadow: 2px 2px 4px white;
 }
 
 #placeholder_segment {
   padding: 20px;
 }
 
-#individual_board_header {
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
+#searchbar{
+  padding-left: 30px;
 }
-
 #image_cards {
   padding: 10px;
 }
 
 #segment_background {
   background-color: #faebd7;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 #arrow_icon {
-  margin-top: 42px;
+  margin-top: 35px;
   position: absolute;
   top: 0px;
   left: 0px;
+  display:inline-block;
+  padding-left:30px;
+
+}
+
+#individual_board_header {
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+    font-family: 'Exo', sans-serif;
+}
+
+#box{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#x_icon{
+  /* background-color: black; */
+  /* padding-bottom:200px; */
 }

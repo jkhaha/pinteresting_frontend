@@ -98,11 +98,11 @@ class CreateBoardContainer extends Component{
 
   render(){
     console.log(this.props.selectedBoard)
-    const titleHeader = `${this.props.boardTitle} BoredBoard`
+    const titleHeader = `${this.props.boardTitle}'s Vision Board`
     return(
       <div>
 
-      <h2 id='individual_board_header'  className='ui block header' style={{width: '100%'}}>
+      <h2 id='individual_board_header' style={{width: '100%'}}>
           <Link to={`/boards`}><i id="arrow_icon" className="arrow left icon"></i>   </Link>{titleHeader}
         </h2>
 

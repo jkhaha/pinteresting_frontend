@@ -15,7 +15,7 @@ class CreateNewBoard extends Component {
   render() {
     return(
       <div className='ui column' id="placeholder_segment">
-      <div className="ui placeholder segment">
+      <div className="ui placeholder segment" id="box">
         <div className="ui icon header">
            <i className="plus icon" onClick={()=>this.props.handleNewBoardClick(this.state)}></i>
            <div className="ui form">
