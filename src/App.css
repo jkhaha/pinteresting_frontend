@@ -18,21 +18,27 @@
   padding: 20px;
 }
 
-
+#searchbar{
+  padding-left: 30px;
+}
 #image_cards {
   padding: 10px;
 }
 
 #segment_background {
   background-color: #faebd7;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 #arrow_icon {
-  margin-top: 42px;
+  margin-top: 35px;
   position: absolute;
   top: 0px;
   left: 0px;
   display:inline-block;
+  padding-left:30px;
+
 }
 
 #individual_board_header {
