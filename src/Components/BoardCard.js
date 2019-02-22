@@ -3,8 +3,6 @@ import {Link} from "react-router-dom"
 
 class BoardCard extends Component{
 
-// match with path name, then make fetch request there
-
   render(){
     return(
       <div className='ui column' id="placeholder_segment">
